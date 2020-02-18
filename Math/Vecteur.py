@@ -12,8 +12,8 @@ class Vecteur:
     def norme(self):
         return np.sqrt(self.compX ** 2 + self.compY ** 2)
 
-    def multiplieParK(self,k):
-        return Vecteur(self.compX * k , self.compY * k)
+    def multiplieParK(self, k):
+        return Vecteur(self.compX * k, self.compY * k)
 
-    def diviserParK(self,k):
-        return Vecteur(self.compX / k , self.compY / k)
+    def diviserParK(self, k):
+        return Vecteur(self.compX / k, self.compY / k)

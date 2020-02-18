@@ -17,6 +17,6 @@
 > attiré , repousser , polariser 
 
 
-#### *Palier 2 :* la ratation de n'importe qu'elle objet
+#### *Palier 3 :* la rotation de n'importe qu'elle objet
 > si un objet tourne et que cela doit modifier sont état ou celui de c'est voisin  
 >alors sa le modifie
