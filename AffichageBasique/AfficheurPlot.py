@@ -1,13 +1,13 @@
 from threading import Thread as T
 import matplotlib.pyplot as plt
-import random as pif
 
 
 class AfficheurPlot(T):
 
-    def __init__(self, tabPts):
+    def __init__(self, tabPts,inte):
         T.__init__(self)
         self.tabPts = tabPts
+        self.integr = inte
 
     def run(self):
         plt.ion()
@@ -17,8 +17,9 @@ class AfficheurPlot(T):
         for i in range(500):
             self.update()
             self.setdraw()
+            self.centreAxes()
             plt.draw()
-            plt.pause(0.0001)
+            plt.pause(0.00001)
             plt.clf()
 
     def setdraw(self):
@@ -35,6 +36,9 @@ class AfficheurPlot(T):
     def centreAxes(self):
         # centré le repere -------------------------------------------
         ax = plt.gca()
+        ax.set_xlim([-20,20])
+        ax.set_ylim([-20,20])
+        ax.grid(True)
         ax.xaxis.set_ticks_position('bottom')
         ax.spines['bottom'].set_position(('data', 0))
         ax.yaxis.set_ticks_position('left')
@@ -44,11 +48,10 @@ class AfficheurPlot(T):
         x = []
         y = []
         for i in range(tabPoints.__len__()):
-            x.append(tabPoints[i].posX)
-            y.append(tabPoints[i].posY)
+            x.append(tabPoints[i].position.posX)
+            y.append(tabPoints[i].position.posY)
         return x, y
 
     def update(self):
-        for p in self.tabPts:
-            p.posX += pif.uniform(-0.1, 0.1)
-            p.posY += pif.uniform(-0.1, 0.1)
+        for o in self.tabPts:
+            self.integr.majObjet(o)

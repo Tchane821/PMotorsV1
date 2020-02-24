@@ -4,12 +4,12 @@ from Math.Vecteur import Vecteur
 class PhysiqueGenerale:
     def __init__(self, objs):
         self.objets = objs
-        self.G = 6.674 * 10 ** -11
+        self.G = 0.01
 
     def attractionAB(self, a, b):
-        ab = Vecteur(b.posX - a.posY, b.posY - a.posY)
+        ab = Vecteur(b.position.posX - a.position.posX, b.position.posY - a.position.posY)
         uAB = ab.diviserParK(ab.norme())
-        kRatio = self.G * ((a.masse * b.masse) / a.position.distance(b) ** 2)
+        kRatio = self.G * ((a.masse * b.masse) / a.position.distance(b.position) ** 2)
         res = uAB.multiplieParK(kRatio)
         return res
 
