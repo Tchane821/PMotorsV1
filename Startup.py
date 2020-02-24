@@ -10,12 +10,19 @@ def main():
     #tabPoints = p.Point(0, 0).randPoints(100, -10, 10)
     terre = Object("terre",30, Point(0, 0), Vecteur(0, 0), Vecteur(0, 0),0)
     mars = Object("mars",5, Point(0,5), Vecteur(-0.25, 0), Vecteur(0, 0),0)
-    positron = Object("positron",0,Point(0,0),Vecteur(0,0),Vecteur(0,0),0.00001)
+
+    positron = Object("positron",0,Point(0,0),Vecteur(0.01,0),Vecteur(0,0),0.00001)
+    positron2 = Object("positron2",0,Point(5,0),Vecteur(-0.01,0),Vecteur(0,0),0.00001)
     electron = Object("electron",0,Point(5,0),Vecteur(0,0),Vecteur(0,0),-0.00001)
+
+    planeteMagnetique = Object("planeteMagnetique",1,Point(0,0),Vecteur(0,0),Vecteur(0,0),-0.00001)
+    planeteMagnetique2 = Object("planeteMagnetique2",1,Point(5,0),Vecteur(0,0.1),Vecteur(0,0),0.00001)
 
     deltaT = 0.75
     #tabObjets = [terre,mars]
-    tabObjets = [positron,electron]
+    #tabObjets = [positron,electron]
+    tabObjets = [positron,positron2]
+    #tabObjets = [planeteMagnetique,planeteMagnetique2]
     intePhysique = ILeapFrog(tabObjets,deltaT)
     inteElectrique = IForceElectrique(tabObjets,deltaT)
     th1 = afp.AfficheurPlot(tabObjets,intePhysique,inteElectrique)
