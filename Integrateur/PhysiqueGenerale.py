@@ -14,9 +14,13 @@ class PhysiqueGenerale:
         return res
 
     def acceleration(self, obj):
-        va = Vecteur(0, 0)
+        va = obj.acceleration
         for cobj in self.objets:
             if obj != cobj:
                 va = va.somme(self.attractionAB(obj, cobj))
         va = va.diviserParK(obj.masse)
-        return va
+        obj.acceleration = obj.acceleration.somme(va)
+
+    def prochaineVitesse(self, obj, dt):
+        return Vecteur(obj.vitesse.compX + obj.acceleration.multiplieParK(dt).compX,
+                       obj.vitesse.compY + obj.acceleration.multiplieParK(dt).compY)

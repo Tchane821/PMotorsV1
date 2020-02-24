@@ -1,13 +1,16 @@
 from threading import Thread as T
 import matplotlib.pyplot as plt
 
+from Math.Vecteur import Vecteur
+
 
 class AfficheurPlot(T):
 
-    def __init__(self, tabPts,inte):
+    def __init__(self, tabPts,inteP,inteE):
         T.__init__(self)
         self.tabPts = tabPts
-        self.integr = inte
+        self.inteP = inteP
+        self.inteE = inteE
 
     def run(self):
         plt.ion()
@@ -54,4 +57,7 @@ class AfficheurPlot(T):
 
     def update(self):
         for o in self.tabPts:
-            self.integr.majObjet(o)
+            o.afficher()
+            o.acceleration = Vecteur(0,0)
+            self.inteE.majObjetElec(o)
+            self.inteP.majObjetPhy(o)

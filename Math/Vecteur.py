@@ -16,4 +16,7 @@ class Vecteur:
         return Vecteur(self.compX * k, self.compY * k)
 
     def diviserParK(self, k):
-        return Vecteur(self.compX / k, self.compY / k)
+        if k !=0:
+            return Vecteur(self.compX / k, self.compY / k)
+        else:
+            return self

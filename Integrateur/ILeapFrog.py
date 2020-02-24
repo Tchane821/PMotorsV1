@@ -9,16 +9,13 @@ class ILeapFrog(PhysiqueGenerale):
         self.dt = dt
         self.first = True
 
-    def prochaineVitesse(self, obj, dt):
-        return Vecteur(obj.vitesse.compX + obj.acceleration.multiplieParK(dt).compX,
-                       obj.vitesse.compY + obj.acceleration.multiplieParK(dt).compY)
 
     def prochainePosition(self, obj, dt):
         return Point(obj.position.posX + obj.vitesse.multiplieParK(dt).compX,
                      obj.position.posY + obj.vitesse.multiplieParK(dt).compY)
 
-    def majObjet(self, obj):
-        obj.acceleration = self.acceleration(obj)
+    def majObjetPhy(self, obj):
+        self.acceleration(obj)
         if self.first:
             obj.vitesse = self.prochaineVitesse(obj, 0.5 * self.dt)
             obj.position = self.prochainePosition(obj, self.dt)
