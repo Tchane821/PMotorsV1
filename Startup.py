@@ -14,7 +14,6 @@ def main():
     positron = Object("positron",0,Point(0,0),Vecteur(0.01,0),Vecteur(0,0),0.00001)
     positron2 = Object("positron2",0,Point(5,0),Vecteur(-0.01,0),Vecteur(0,0),0.00001)
     electron = Object("electron",0,Point(5,0),Vecteur(0,0),Vecteur(0,0),-0.00001)
-
     planeteMagnetique = Object("planeteMagnetique",1,Point(0,0),Vecteur(0,0),Vecteur(0,0),-0.00001)
     planeteMagnetique2 = Object("planeteMagnetique2",1,Point(5,0),Vecteur(0,0.1),Vecteur(0,0),0.00001)
 
